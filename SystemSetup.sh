@@ -6,8 +6,9 @@
 CONFIG="$HOME/.config"
 
 # Updates
-
-sudo apt update && sudo apt upgrade -y
+updates () {
+	sudo apt update && sudo apt upgrade -y
+}
 
 # Handy paquet
 # Set of paquet that are often used
@@ -94,6 +95,7 @@ setup_i3 () {
 
 # Installation of everything
 install_full () {
+	updates
 	setup_handy
 	setup_zsh
 	setup_tmux
@@ -104,6 +106,7 @@ install_full () {
 
 # Installation for a head less system
 install_headless () {
+	updates
 	setup_handy
 	setup_zsh
 	setup_tmux
