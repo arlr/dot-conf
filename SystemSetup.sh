@@ -134,7 +134,7 @@ else
 			install_full
 			;;
 		-l)
-			echot "Head less install"
+			echo "Head less install"
 			install_headless
 			;;
 		*)
