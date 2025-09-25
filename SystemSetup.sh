@@ -92,11 +92,51 @@ function setup_i3 {
 	cp -r i3status/ $CONFIG
 }
 
-# Run Everything
-setup_handy
-setup_zsh
-setup_tmux
-setup_vim
-setup_alacritty
-setup_i3
+# Installation of everything
+function install_full {
+	setup_handy
+	setup_zsh
+	setup_tmux
+	setup_vim
+	setup_alacritty
+	setup_i3
+}
 
+# Installation for a head less system
+funtion install_headless {
+	setup_handy
+	setup_zsh
+	setup_tmux
+	setup_vim
+}
+
+# Print help
+function print_help {
+	echo"\n
+-h: Print this help\n
+-a: install everything\n
+-l: install head less\n
+"
+}
+
+# Read parameter
+if [[ ! -n $1 ]];
+then 
+    echo "No parameter passed."
+	print_help
+else 
+	case "$1" in
+		-h)
+			print_help
+			;;
+		-a)
+			function install_full
+			;;
+		-l)
+			funtion install_headless
+			;;
+		*)
+			print_help
+			;;
+	esac
+fi
