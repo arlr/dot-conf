@@ -127,12 +127,15 @@ then
 else 
 	case "$1" in
 		-h)
+			echo "Help:"
 			print_help
 			;;
 		-a)
+			echo "Full installation"
 			function install_full
 			;;
 		-l)
+			echot "Head less install"
 			funtion install_headless
 			;;
 		*)
