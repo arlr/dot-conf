@@ -1,0 +1,13 @@
+#general:
+import = [
+    "~/.config/alacritty/themes/themes/horizon_dark.toml"
+]
+[window]
+  opacity = 0.9  # Adjust between 0.0 (fully transparent) and 1.0 (fully opaque)
+
+#[font]
+#  family = "Cascadia Code Nerd Font"
+#  size = 12.0
+[font]
+  normal = { family = "CaskaydiaCove Nerd Font"}
+  size = 12.0

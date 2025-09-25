@@ -1,0 +1,77 @@
+# i3status configuration file
+# Neon theme to match i3wm neon colors
+# Place this file at ~/.config/i3status/config
+
+general {
+    colors = true
+    markup = "pango"
+    interval = 5
+    
+    # Neon theme colors
+    color_good = "#e94560"      # neon magenta for good status
+    color_degraded = "#bbe1fa"  # light blue for warning
+    color_bad = "#ff0080"       # neon pink for bad status
+    color_separator = "#0f3460" # dark blue separator
+}
+
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery BAT1"
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "tztime local"
+
+# Wireless network status
+wireless _first_ {
+    format_up = "<span foreground='#e94560'>   %essid (%quality) %ip </span>"
+    format_down = "<span foreground='#ff0080'> WiFi Down </span>"
+}
+
+# Ethernet status
+ethernet _first_ {
+    format_up = "<span foreground='#e94560'> 󰈀  %ip</span>"
+    format_down = "<span foreground='#ff0080'> Eth Down </span>"
+}
+
+# Battery status
+battery BAT1 {
+    format = "<span foreground='%color'>Bat  (%status) %percentage </span>"
+    format_down = "<span foreground='#ff0080'> No Battery </span>"
+    status_chr = "󰂄"
+    status_bat = "󰁾"
+    status_unk = "󰂃"
+    status_full = "󰁹"
+    low_threshold = 15
+    threshold_type = percentage
+    hide_seconds = true
+}
+
+# CPU usage
+cpu_usage {
+    format = "<span foreground='#e94560'>   %usage </span>"
+    max_threshold = 75
+    format_above_threshold = "<span foreground='#ff0080'> %usage</span>"
+    degraded_threshold = 50
+    format_above_degraded_threshold = "<span foreground='#bbe1fa'> %usage</span>"
+}
+
+# Memory usage
+memory {
+    format = "<span foreground='#e94560'>   %used/%total </span>"
+    threshold_degraded = "1G"
+    format_degraded = "<span foreground='#bbe1fa'> %used/%total</span>"
+}
+
+# Disk usage
+disk "/" {
+    format = "<span foreground='#e94560'> 󰋊 %avail </span>"
+    threshold_type = "percentage_free"
+    low_threshold = 10
+    format_below_threshold = "<span foreground='#ff0080'> %avail</span>"
+}
+
+# Date and time
+tztime local {
+    format = "<span foreground='#e94560'> %Y-%m-%d %H:%M:%S </span>"
+}
