@@ -112,11 +112,7 @@ install_headless () {
 
 # Print help
 print_help () {
-	echo"\n
--h: Print this help\n
--a: install everything\n
--l: install head less\n
-"
+	echo -e "-h: Print this help\n-a: install everything\n-l: install head less\n"
 }
 
 # Read parameter
