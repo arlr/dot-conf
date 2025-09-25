@@ -88,8 +88,8 @@ function setup_i3 {
 	echo "Setup i3 windows manager"
 	echo "Install i3 paquets"
 	sudo apt install i3 i3status -y
-	cp i3/ $CONFIG
-	cp i3status/ $CONFIG
+	cp -r i3/ $CONFIG
+	cp -r i3status/ $CONFIG
 }
 
 # Run Everything
