@@ -132,11 +132,11 @@ else
 			;;
 		-a)
 			echo "Full installation"
-			function install_full
+			install_full
 			;;
 		-l)
 			echot "Head less install"
-			funtion install_headless
+			install_headless
 			;;
 		*)
 			print_help
