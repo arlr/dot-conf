@@ -11,7 +11,7 @@ sudo apt update && sudo apt upgrade -y
 
 # Handy paquet
 # Set of paquet that are often used
-function setup_handy {
+setup_handy () {
 	HANDY_PQT=" openvpn wget curl nmap htop "
 	echo "Setup handy paquets:"
 	echo $HANDY_PQT
@@ -19,7 +19,7 @@ function setup_handy {
 }
 
 # ZSH setup
-function setup_zsh {
+setup_zsh () {
 
 	echo "Setup ZSH"
 	echo "Install zsh paquet"
@@ -58,7 +58,7 @@ function setup_zsh {
 }
 
 # Tmux Setup
-function setup_tmux {
+setup_tmux () {
 	echo "Setup Tmux"
 	echo "Install tmux paquet"
 	sudo apt install tmux -y
@@ -68,7 +68,7 @@ function setup_tmux {
 }
 
 # Vim Setup
-function setup_vim {
+setup_vim () {
 	echo "Setup Vim"
 	echo "Install vim paquet"
 	sudo apt install vim -y
@@ -76,7 +76,7 @@ function setup_vim {
 }
 
 # Alacritty setup
-function setup_alacritty {
+setup_alacritty () {
 	echo "Setup Alacritty"
 	echo "Install alacritty paquet"
 	sudo apt install alacritty -y
@@ -84,7 +84,7 @@ function setup_alacritty {
 }	
 
 # i3 Setup
-function setup_i3 {
+setup_i3 () {
 	echo "Setup i3 windows manager"
 	echo "Install i3 paquets"
 	sudo apt install i3 i3status -y
@@ -93,7 +93,7 @@ function setup_i3 {
 }
 
 # Installation of everything
-function install_full {
+install_full () {
 	setup_handy
 	setup_zsh
 	setup_tmux
@@ -103,7 +103,7 @@ function install_full {
 }
 
 # Installation for a head less system
-funtion install_headless {
+install_headless () {
 	setup_handy
 	setup_zsh
 	setup_tmux
@@ -111,7 +111,7 @@ funtion install_headless {
 }
 
 # Print help
-function print_help {
+print_help () {
 	echo"\n
 -h: Print this help\n
 -a: install everything\n
