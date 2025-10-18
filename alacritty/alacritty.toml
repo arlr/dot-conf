@@ -1,5 +1,4 @@
-#general:
-import = [
+general.import = [
     "~/.config/alacritty/themes/themes/horizon_dark.toml"
 ]
 [window]
