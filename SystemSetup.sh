@@ -64,7 +64,9 @@ setup_tmux () {
 	echo "Install tmux paquet"
 	sudo apt install tmux -y
 	cp .tmux.conf ~/.tmux.conf
-	#Tmux conf file has the commands to DL and install plugins + themes.
+	#setup themes
+	curl https://raw.githubusercontent.com/arlr/dot-conf/refs/heads/main/themes/tmux_alr.sh --create-dirs -o  ~/.tmux/plugins/tmux-powerline/themes/tmux_alr.sh
+	curl https://raw.githubusercontent.com/arlr/dot-conf/refs/heads/main/tmux-powerline/config.sh --create-dirs -o  ~/.config/tmux-powerline/config.sh
 	#tmux source ~/.tmux.conf
 }
 
