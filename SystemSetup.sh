@@ -90,7 +90,7 @@ setup_alacritty () {
 setup_i3 () {
 	echo "Setup i3 windows manager"
 	echo "Install i3 paquets"
-	sudo apt install i3 i3status -y
+	sudo apt install i3 i3status feh -y
 	cp -r i3/ $CONFIG
 	cp -r i3status/ $CONFIG
 }
