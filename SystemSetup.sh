@@ -2,8 +2,12 @@
 
 # Variables
 # Dest configuration folder
-
 CONFIG="$HOME/.config"
+
+#Work arround for non interactive install
+export DEBIAN_FRONTEND=noninteractive
+sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+
 
 # Updates
 updates () {
@@ -13,49 +17,18 @@ updates () {
 # Handy paquet
 # Set of paquet that are often used
 setup_handy () {
-	HANDY_PQT=" openvpn wget curl nmap htop "
+	HANDY_PQT=" openvpn wget curl nmap htop dialog "
 	echo "Setup handy paquets:"
 	echo $HANDY_PQT
 	sudo apt install $HANDY_PQT -y
 }
 
-# ZSH setup
-setup_zsh () {
+# FISH setup
+setup_fish () {
 
-	echo "Setup ZSH"
-	echo "Install zsh paquet"
-	sudo apt install zsh -y
-	
-	if [ ! -d "~/.oh-my-zsh" ]; then
-		echo "No Oh my ZSH found"
- 		
-		# Skip unattended to avoid zsh to run directly
-		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
- 		
-		# Set ZSH as default shell manually
- 		chsh -s $(which zsh)
-	
-		echo "Install spaceship"
-		
-		ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
-		echo "ZSH CUSTOM PATH: $ZSH_CUSTOM"
-		git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-		ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-	
-		ZSHRC_FILE="$HOME/.zshrc"
-		THEME_SETTING='ZSH_THEME="spaceship"'
-
-		# Check if ZSH_THEME is already set
-		if grep -q "ZSH_THEME=" "$ZSHRC_FILE"; then
-   			# If ZSH_THEME is found, replace its value with "spaceship"
-    		sed -i 's/^ZSH_THEME=".*"/ZSH_THEME="spaceship"/' "$ZSHRC_FILE"
-    		echo "Updated ZSH_THEME to \"spaceship\" in $ZSHRC_FILE"
-		else
-    		# If ZSH_THEME is not found, append it to the file
-    		echo "$THEME_SETTING" >> "$ZSHRC_FILE"
-    		echo "Added ZSH_THEME=\"spaceship\" to $ZSHRC_FILE"
-		fi
-	fi
+	echo "Setup FISH"
+	echo "Install fish paquet"
+	sudo apt install fish -y
 }
 
 # Tmux Setup
@@ -100,7 +73,7 @@ setup_i3 () {
 install_full () {
 	updates
 	setup_handy
-	setup_zsh
+	setup_fish
 	setup_tmux
 	setup_vim
 	setup_alacritty
@@ -111,7 +84,7 @@ install_full () {
 install_headless () {
 	updates
 	setup_handy
-	setup_zsh
+	setup_fish
 	setup_tmux
 	setup_vim
 }
